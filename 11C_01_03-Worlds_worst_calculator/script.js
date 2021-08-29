@@ -6,7 +6,6 @@ let previousResults = []
 let firstNumberResult
 
 function startCalculation() {
-    clearResults()
     let values = readValues()
     let result = calculateValues(values[0], values[1], values[2])
     result = checkRounding(result)
@@ -58,7 +57,8 @@ function showResultInList(result) {
 
 function clearResults() {
     document.querySelector("#clear").addEventListener("click", () => {
-        // TO DO
+        previousResults = []
+        document.getElementById("results").innerHTML = "0"
     })
 }
 
