@@ -187,7 +187,47 @@ function optionFunction8(input) {
     //     }
     //     else {}
     // }
+
+
+
+    // let splitArr = input.split("-")
+    // splitArr.forEach(makeUppercaseLetter)
+
+    // function makeUppercaseLetter(){
+    //     input[] = input.substring(0,1).toUpperCase()
+        
+    // }
+
+
+    let result
+    let searchAt = 0
+    if (input.includes(" ")) {
+        result = input.substring(0, input.indexOf(" ") + 1)
+        recursive()
+    }
+    else if (input.includes("-")) {
+
+    }
+    else {
+        result = input
+    }
+
+
 }
+
+function recursive() {
+    let spacePlace = input.indexOf(" ", searchAt + 1)
+    if (spacePlace !== -1) {
+
+        if (input.indexOf(" ", spacePlace + 1) !== -1){
+            result += input.sunstring(spacePlace + 1, spacePlace + 2).toUpperCase() + input.substring ITDDDDDDDDDDDDDDDDDD
+        }
+    }
+}
+
+
+
+
 
 
 initialize()
