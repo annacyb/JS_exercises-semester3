@@ -56,7 +56,7 @@ function showResultInList(result) {
 }
 
 function clearResults() {
-    document.querySelector("#clear").addEventListener("click", () => {
+        document.querySelector("#clear").addEventListener("click", () => {
         previousResults = []
         document.getElementById("results").innerHTML = "0"
     })
