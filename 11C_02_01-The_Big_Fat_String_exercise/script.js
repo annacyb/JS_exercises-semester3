@@ -18,33 +18,34 @@ function initialize() {
 function startFunctions() {
     let inputValue = document.querySelector("#inputField").value
     const optionChosen = document.getElementById("optionsForChoosing").value
+    let returnedValue = ""
     if (optionChosen == "1") {
-        optionFunction1(inputValue)
+        returnedValue = optionFunction1(inputValue)
     }
     else if (optionChosen == "2") {
-        optionFunction2(inputValue)
+        returnedValue = optionFunction2(inputValue)
     }
     else if (optionChosen == "3") {
-        optionFunction3(inputValue)
+        returnedValue = optionFunction3(inputValue)
     }
     else if (optionChosen == "4") {
-        optionFunction4(inputValue)
+        returnedValue = optionFunction4(inputValue)
     }
     else if (optionChosen == "5") {
-        optionFunction5(inputValue)
+        returnedValue = optionFunction5(inputValue)
     }
     else if (optionChosen == "6") {
-        optionFunction6(inputValue)
+        let returnedPassword = optionFunction6(inputValue)
+        document.querySelector("#inputField").value = returnedPassword
     }
     else if (optionChosen == "7") {
-        optionFunction7(inputValue)
+        returnedValue = optionFunction7(inputValue)
     }
     else if (optionChosen == "8") {
-        optionFunction8(inputValue)
+        returnedValue = optionFunction8(inputValue)
     }
-    // NIE DZIALA!!!!!!!
-    // const outputValue = document.querySelector("#outputField").value
-    // outputValue = result
+
+    document.querySelector("#outputField").value = returnedValue
 
 }
 
@@ -63,6 +64,7 @@ function optionFunction1(input) {
         console.log(result)
         return result
     }
+
 }
 
 function optionFunction2(input) {
@@ -156,7 +158,7 @@ function optionFunction6(input) {
     else {
         alert("Password does not contain spaces")
     }
-    // TO DO RETURN RETURNTOINPUT FILD TO FIRST INPUT FIELD
+
 }
 
 function optionFunction7(input) {
@@ -176,7 +178,7 @@ function optionFunction7(input) {
 
 function optionFunction8(input) {
     // With any input: Make a character uppercase, if it follows a space or a hyphen
-    
+
     // let letters = input.split("")
     // console.log(letters)
     // letters.forEach(letter) {
