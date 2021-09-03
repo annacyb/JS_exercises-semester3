@@ -1,0 +1,27 @@
+html {
+    background-color: blanchedalmond;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 60px;
+    color: #93580c;
+}
+
+#chart {
+    display: flex;
+    flex-flow: row;
+    margin-top: 50px;
+    justify-content: center;
+    grid-gap: 0.05vw;
+    flex-flow: wrap-reverse;
+    height: 200px;
+    border-bottom: rgb(89, 92, 92) 1px solid;
+}
+
+.bar {
+    height: 10vw;
+    width: 1vw;
+    background-color: darkolivegreen;
+    border: blanchedalmond 1px solid;
+}
