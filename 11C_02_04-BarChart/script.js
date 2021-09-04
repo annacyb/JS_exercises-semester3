@@ -1,67 +1,41 @@
 "use strict"
 
+window.addEventListener("DOMContentLoaded", init)
 
-init()
+let array = []
 
 function init() {
-    const array = []
-    let value = 0
-    showChart(value, array)
+    let number = getNumberOfCustomers()
+    getData(number)
+    displayData()
+    console.log(array)
+    setTimeout(init, 1000)
 }
-
-function showChart(value, array) {
-    value++
-    if (value < 100) {
-        array = prepareData(array)
-        createBarElements(array)
-        setTimeout(showChart.bind(null, value, array), 1000)
-    }
-}
-
-function prepareData(array) {
-    // const eachNumber = getNumberOfCustomers()
-    // let counter = 0
-    // if(counter < 40){
-    //     counter++
-    //     array.push(eachNumber)
-        
-    //     array.forEach(element => {
-    //     createBarElements(array)
-    //     });
-    // }
-    // else {
-    //     array1.unshift(counter)
-    //     array.push(eachNumber)
-    // }
-
-
-    // usunac nadmiarowe liczby z listy
-
-    // zwrocic liste
-    return array
-}
-
-function createBarElements(array) {
-    // usun wszystkie istniejace slupki z HTMLa
-
-    // dodaj wszystkie slupki z arraya do HTMLa
-    const container = document.querySelector("#chart")
-    const eachBarElement = document.createElement('div')
-    eachBarElement.className = "bar"
-    const eachNumber = getNumberOfCustomers()
-
-    eachBarElement.style.height = eachNumber*7 + "px";
-    container.appendChild(eachBarElement)
-}
-
 
 function getNumberOfCustomers() {
     // FAKE: gives a completely random number
     return Math.floor(Math.random()*32)
 }
 
+function getData(number) {
+    if (array.length < 40){
+        array.push(number)
+    }
+    else {
+        array.shift()
+        array.push(number)
+    }
+}
 
-
-
-
-
+function displayData() {
+    const container = document.querySelector("#chart")
+    // removes all divs from container
+    container.innerHTML = ""
+    // show all array element's values
+    for(let i = 0; i < array.length; i++){
+        const eachBarElement = document.createElement('div')
+        eachBarElement.className = "bar"
+        eachBarElement.style.height = (array[i])*7 + "px"
+        container.appendChild(eachBarElement)
+    }
+}
