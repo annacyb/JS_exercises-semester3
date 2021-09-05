@@ -45,6 +45,9 @@ function prepareObjects( jsonData ) {
         student.lastName = makeFirstLetterUppercase(nameSplit[nameSplit.length - 1])
         student.middleName = getMiddleName(nameSplit)
         student.nickName = getNickName(nameSplit)
+        // image to do
+        student.house = makeFirstLetterUppercase(jsonObject.house)
+        student.gender = makeFirstLetterUppercase(jsonObject.gender)
 
         allStudents.push(student)
 
@@ -54,9 +57,11 @@ function prepareObjects( jsonData ) {
 }
 
 function makeFirstLetterUppercase(input) {
+    input = input.trim()
     input = input.toLowerCase()
     let firstCapitalLetter = input.substring(0,1).toUpperCase()
-    let result = ''
+    let result = ""
+    // condition for when last name has two parts seperated by "-"
     if (input.includes("-")) {
         const hyphenIndex = input.indexOf("-")
         const secondLastname = input.substring((hyphenIndex + 1), (hyphenIndex + 2) ).toUpperCase() + input.substring((hyphenIndex + 2) )
@@ -70,32 +75,37 @@ function makeFirstLetterUppercase(input) {
 
 
 function getMiddleName(input) {
+    let middleName = ""
     if (input.length > 2) {
-        let middleName = input[1]
+        middleName = input[1]
         if (!middleName.includes(`"`)) {
             middleName = makeFirstLetterUppercase(middleName)
-            return middleName
         }
         else {
-            return "-"
+            middleName = "-"
         }
     }
     else {
-        return "-"
+        middleName = "-"
     }
+    return middleName
 }
 
 function getNickName(input) {
+    let middleName = ""
     if (input.length > 2) {
-        let middleName = input[1]
+        middleName = input[1]
         if (middleName.includes(`"`)) {
             middleName = middleName.substring(0,1) + middleName.substring(1,2).toUpperCase() + middleName.substring(2)
-            return middleName
+        }
+        else {
+            middleName = "-"
         }
     }
     else {
-        return "-"
+        middleName = "-"
     }
+    return middleName
 }
 
 
