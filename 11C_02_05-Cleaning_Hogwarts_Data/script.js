@@ -41,10 +41,11 @@ function prepareObjects( jsonData ) {
         jsonObject.fullname = jsonObject.fullname.trim()
         let nameSplit = jsonObject.fullname.split(" ")
 
-        student.firstName = makeOnlyFirstLetterUppercase(nameSplit[0])
+        student.firstName = makeFirstLetterUppercase(nameSplit[0])
+        student.lastName = makeFirstLetterUppercase(nameSplit[nameSplit.length - 1])
+        student.middleName = getMiddleName(nameSplit)
+        student.nickName = getNickName(nameSplit)
 
-        student.lastName = makeOnlyFirstLetterUppercase(nameSplit[nameSplit.length - 1])
-        
         allStudents.push(student)
 
     })
@@ -52,20 +53,49 @@ function prepareObjects( jsonData ) {
     displayList()
 }
 
-function makeOnlyFirstLetterUppercase(input) {
+function makeFirstLetterUppercase(input) {
     input = input.toLowerCase()
     let firstCapitalLetter = input.substring(0,1).toUpperCase()
     let result = ''
     if (input.includes("-")) {
         const hyphenIndex = input.indexOf("-")
         const secondLastname = input.substring((hyphenIndex + 1), (hyphenIndex + 2) ).toUpperCase() + input.substring((hyphenIndex + 2) )
-        console.log(secondLastname)
         result = firstCapitalLetter + input.substring(1, hyphenIndex ) + "-" + secondLastname
     }
     else  {
         result = firstCapitalLetter + input.substring(1)
     }
     return result
+}
+
+
+function getMiddleName(input) {
+    if (input.length > 2) {
+        let middleName = input[1]
+        if (!middleName.includes(`"`)) {
+            middleName = makeFirstLetterUppercase(middleName)
+            return middleName
+        }
+        else {
+            return "-"
+        }
+    }
+    else {
+        return "-"
+    }
+}
+
+function getNickName(input) {
+    if (input.length > 2) {
+        let middleName = input[1]
+        if (middleName.includes(`"`)) {
+            middleName = middleName.substring(0,1) + middleName.substring(1,2).toUpperCase() + middleName.substring(2)
+            return middleName
+        }
+    }
+    else {
+        return "-"
+    }
 }
 
 
