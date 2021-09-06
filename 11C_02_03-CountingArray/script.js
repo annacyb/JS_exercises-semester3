@@ -15,7 +15,7 @@
 // [19,18,17,16,15,14,13,12,11] 
 
 let counter = -1
-let array1 = []
+const array1 = []
 init()
 
 function init() {
