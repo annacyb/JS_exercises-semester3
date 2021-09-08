@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="top">
+        <div>
+            <h1>Select a color</h1>
+        </div>
+        <div id="topElements">
+            <input type="color">
+
+            <div id="textElements">
+                <div>
+                    <h3>HEX: <span id="hex"></span></h3>
+                </div>
+                <div>
+                    <h3>RGB: <span id="rgb"></span></h3>
+                </div>
+                <div>
+                    <h3>HSL: <span id="hsl"></span></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="middleElements">
+        <div id="middle-left">
+            <div id="selectElement">
+                <select id="optionsForChoosing">
+                    <option value="0">Choose one of the options</option>
+                    <option value="1.Analogous">Analogous</option>
+                    <option value="2.Monochromatic">Monochromatic</option>
+                    <option value="3.Triad">Triad</option>
+                    <option value="4.Complementary">Complementary</option>
+                    <option value="5.Compound">Compound</option>
+                    <option value="6.Shades">Shades</option>
+
+                </select>
+            </div>
+
+        </div>
+        <div id="middle-right">
+            <div id="linkedColors">
+                <div class="colorInfo">
+                    <div id="square1" class="colorSquare"></div>
+                    <p>HEX: <span id="square1HEX"></span></p>
+                    <p>RGB: <span id="square1RGB"></span></p>
+                    <p>HSL: <span id="square1HSL"></span></p>
+                </div>
+                <div class="colorInfo">
+                    <div id="square2" class="colorSquare"></div>
+                    <p>HEX: <span id="square2HEX"></span></p>
+                    <p>RGB: <span id="square2RGB"></span></p>
+                    <p>HSL: <span id="square2HSL"></span></p>
+                </div>
+                <div class="colorInfo">
+                    <div id="mainColorSquare"></div>
+                    <p>HEX: <span id="squareMainHEX"></span></p>
+                    <p>RGB: <span id="squareMainHEX"></span></p>
+                    <p>HSL: <span id="squareMainHEX"></span></p>
+                </div>
+                <div class="colorInfo">
+                    <div id="square3" class="colorSquare"></div>
+                    <p>HEX: <span id="square3HEX"></span></p>
+                    <p>RGB: <span id="square3RGB"></span></p>
+                    <p>HSL: <span id="square3HSL"></span></p>
+                </div>
+                <div class="colorInfo">
+                    <div id="square4" class="colorSquare"></div>
+                    <p>HEX: <span id="square4HEX"></span></p>
+                    <p>RGB: <span id="square4RGB"></span></p>
+                    <p>HSL: <span id="square4HSL"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script src="script.js"></script>
+
+</html>
