@@ -1,9 +1,9 @@
 "use strict"
 
 //NEW LINE
-const colorAndHarmonyChosen = { color: {}, harmony: "" }
+const colorAndHarmonyChosen = { mainColor: {}, harmony: "" }
 
-window.addEventListener("DOMContentLoaded", init)
+// window.addEventListener("DOMContentLoaded", init)
 
 setEventListeners()
 
@@ -11,6 +11,7 @@ function setEventListeners() {
     // for the first colour- picked y the user
     let colorPickerElement = document.querySelector(`[type="color"]`)
     colorPickerElement.addEventListener("input", init)
+    
     // for select element with many options to choose by the user
     let selectElement = document.querySelector("#optionsForChoosing").addEventListener("click", getHarmony)
 }
@@ -18,19 +19,26 @@ function setEventListeners() {
 function init() {
     setEventListeners()
     const selectedColor = getColor()
-    const convertedData = prepareData(selectedColor)
-    // console.log(convertedData)
+    console.log(colorAndHarmonyChosen.mainColor.HEX)
+    const convertedData = prepareData(colorAndHarmonyChosen.mainColor.HEX)
+
+    // adding converted values of main color to global object
+    colorAndHarmonyChosen.mainColor.RGB = convertedData.rgb
+    colorAndHarmonyChosen.mainColor.HSL = convertedData.hsl
+    
+    // // console.log(convertedData)
     showColor(convertedData)
 }
 
-// Controller
+// CONTROLLER
 function getColor() {
     // gets a full HEX value with "#" symbol in front
     let selectedColor = document.querySelector(`[type="color"]`).value
-    return selectedColor
+    // return selectedColor
+    colorAndHarmonyChosen.mainColor.HEX = selectedColor
 }
 
-// Model
+// MODEL
 function prepareData(color) {
     // get HEX numbers without "#" symbol
     const colorHEX = getHEXnumbers(color)
@@ -108,7 +116,7 @@ function RGBtoHSL(rgb) {
 }
 
 
-
+// getting 4 more colors which creates harmony with the main color
 
 function getHarmony(colorData) {
     let optionChosen = document.querySelector("#optionsForChoosing").value
@@ -159,7 +167,7 @@ function calculateAnalogus(colorData) {
 
 
 
-// View
+// VIEW
 function showColor(colorData) {
     showColoredSquare(colorData)
     showMainColorHEX(colorData)
