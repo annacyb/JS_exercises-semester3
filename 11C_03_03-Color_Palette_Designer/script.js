@@ -1,14 +1,20 @@
 "use strict"
 
-let colorPickerElement = document.querySelector(`[type="color"]`)
-colorPickerElement.addEventListener("input", init)
+window.addEventListener("DOMContentLoaded", init)
 
 function init() {
+    setEventListenerForColor()
     const selectedColor = getColor()
     const convertedData = prepareData(selectedColor)
     // console.log(convertedData)
     showColor(convertedData)
 }
+
+function setEventListenerForColor() {
+    let colorPickerElement = document.querySelector(`[type="color"]`)
+    colorPickerElement.addEventListener("input", init)
+}
+
 
 // Controller
 function getColor() {
@@ -49,28 +55,52 @@ function RGBtoHSL(rgb) {
     let r = rgb.r
     let g = rgb.g
     let b = rgb.b
-    
+
     // convertion copied from internet
-    let max = Math.max(r, g, b), min = Math.min(r, g, b);
-    let h, s, l = (max + min) / 2;
-      
-    if (max == min) {
-        h = s = 0;
-    } else {
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-      
-        switch (max) {
-        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-        case g: h = (b - r) / d + 2; break;
-        case b: h = (r - g) / d + 4; break;
-        }
-      
-        h /= 6;
+    r /= 255;
+    g /= 255;
+    b /= 255;
+ 
+    let h, s, l;
+ 
+    const min = Math.min(r,g,b);
+    const max = Math.max(r,g,b);
+  
+    if( max === min ) {
+        h = 0;
+    } else
+    if (max === r) {
+        h = 60 * (0 + (g - b) / (max - min) );
+    } else
+    if (max === g) {
+        h = 60 * (2 + (b - r) / (max - min) );
+    } else
+    if (max === b) {
+        h = 60 * (4 + (r - g) / (max - min) );
     }
+  
+    if (h < 0) {h = h + 360; }
+  
+    l = (min + max) / 2;
+  
+    if (max === 0 || min === 1 ) {
+        s = 0;
+    } else {
+        s = (max - l) / ( Math.min(l,1-l));
+    }
+    // multiply s and l by 100 to get the value in percent, rather than [0,1]
+    s *= 100;
+    l *= 100;
    
+    // rounding numbers
+    h = Math.round(h)
+    s = Math.round(s)
+    l = Math.round(l)
+
     return {h, s, l}
 }
+
+
 
 // View
 function showColor(colorData) {
