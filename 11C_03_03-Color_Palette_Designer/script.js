@@ -1,20 +1,27 @@
 "use strict"
 
+//NEW LINE
+const colorAndHarmonyChosen = { color: {}, harmony: "" }
+
 window.addEventListener("DOMContentLoaded", init)
 
+setEventListeners()
+
+function setEventListeners() {
+    // for the first colour- picked y the user
+    let colorPickerElement = document.querySelector(`[type="color"]`)
+    colorPickerElement.addEventListener("input", init)
+    // for select element with many options to choose by the user
+    let selectElement = document.querySelector("#optionsForChoosing").addEventListener("click", getHarmony)
+}
+
 function init() {
-    setEventListenerForColor()
+    setEventListeners()
     const selectedColor = getColor()
     const convertedData = prepareData(selectedColor)
     // console.log(convertedData)
     showColor(convertedData)
 }
-
-function setEventListenerForColor() {
-    let colorPickerElement = document.querySelector(`[type="color"]`)
-    colorPickerElement.addEventListener("input", init)
-}
-
 
 // Controller
 function getColor() {
@@ -102,12 +109,62 @@ function RGBtoHSL(rgb) {
 
 
 
+
+function getHarmony(colorData) {
+    let optionChosen = document.querySelector("#optionsForChoosing").value
+
+    console.log(colorData)
+
+    if (optionChosen == "0") {
+    }
+    if (optionChosen == "1.Analogous") {
+        calculateAnalogus(colorData)
+    }
+    if (optionChosen == "2.Monochromatic") {
+
+    }
+    if (optionChosen == "3.Triad") {
+    
+    }
+    if (optionChosen == "4.Complementary") {
+        
+    }
+    if (optionChosen == "5.Compound") {
+        
+    }
+    if (optionChosen == "6.Shades") {
+        
+    }
+}
+
+function calculateAnalogus(colorData) {
+    
+}
+
+
+
+// Used for array of colors somehow
+// let hslObject = {h:350, s:45, l:34}
+// arrofColors = []
+// for(let i=0 ; i<4; i++) {
+//     console.log(i)
+//     arrofColors[i] = Object.assign({}, hslObject)
+// }
+
+// arrofColors[1].h = 11
+// console.log(arrofColors)
+
+
+
+
+
+
 // View
 function showColor(colorData) {
     showColoredSquare(colorData)
-    showHEX(colorData)
-    showRGB(colorData)
-    showHSL(colorData)
+    showMainColorHEX(colorData)
+    showMainColorRGB(colorData)
+    showMainColorHSL(colorData)
 }
 
 function showColoredSquare(color){
@@ -115,18 +172,26 @@ function showColoredSquare(color){
     colorSquare.style.backgroundColor = "#" + color.colorHEX
 }
 
-function showHEX(color){
+function showMainColorHEX(color){
     const hexContainer = document.querySelector("#hex")
     hexContainer.textContent = "#" + color.colorHEX
+
+    const hexContainer2 = document.querySelector("#squareMainHEX")
+    hexContainer2.textContent = "#" + color.colorHEX
 }
 
-function showRGB(color){
+function showMainColorRGB(color){
     const rgbContainer = document.querySelector("#rgb")
     rgbContainer.textContent = color.rgb.r + ", " + color.rgb.g + ", " + color.rgb.b
+
+    const rgbContainer2 = document.querySelector("#squareMainRGB")
+    rgbContainer2.textContent = color.rgb.r + ", " + color.rgb.g + ", " + color.rgb.b
 }
 
-function showHSL(color){
+function showMainColorHSL(color){
     const hslContainer = document.querySelector("#hsl")
     hslContainer.textContent = color.hsl.h + ", " + color.hsl.s + ", " + color.hsl.l
-}
 
+    const hslContainer2 = document.querySelector("#squareMainHSL")
+    hslContainer2.textContent = color.hsl.h + ", " + color.hsl.s + ", " + color.hsl.l
+}
