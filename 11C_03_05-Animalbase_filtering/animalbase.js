@@ -11,16 +11,27 @@ const Animal = {
     age: 0
 };
 
+// Global variable with array of filtered objects from database
+let CURRENT_DATA = []
 
-async function start( ) {
-    console.log("r");
+// Global variable with selected sorting
+let SORT_BY = {
+    column: 'name',
+    order: 'asc'  // asc - ascending (A-Z, 1-9), desc - descending (Z-A, 9-1)
+}
 
+// Global variable with filtering
+let FILTER_BY = {
+    column: '',
+    value: ''
+}
+
+async function start() {
     addFilterEventListeners()
-    // TO DO
-    // addSortEventListeners()
+    addSortEventListeners()
 
-    let data = await loadJSON();
-    displayList(data);
+    await loadJSON();
+    displayList();
 }
 
 
@@ -28,56 +39,99 @@ async function start( ) {
 
 function addFilterEventListeners(){
     const onlyCatsButton = document.querySelector(`[data-filter="cat"]`)
-    onlyCatsButton.addEventListener("click", filterCats)
+    onlyCatsButton.addEventListener("click", changeFiltering.bind(null, "type", "cat"))
 
     const onlyDogsButton = document.querySelector(`[data-filter="dog"]`)
-    onlyDogsButton.addEventListener("click", filterDogs)
+    onlyDogsButton.addEventListener("click", changeFiltering.bind(null, "type", "dog"))
 
     const allButton = document.querySelector(`[data-filter="*"]`)
-    allButton.addEventListener("click", filterAll)
+    allButton.addEventListener("click", changeFiltering.bind(null, "", ""))
 }
 
-async function filterCats() {
-    // download data
-    let data = await loadJSON()
-    // filter data
-    let filterData = data.filter(animal => {
-        return animal.type.includes("cat")
-    })
-    displayList(filterData)
+function addSortEventListeners() {
+    const sortName = document.querySelector(`[data-sort="name"]`)
+    sortName.addEventListener("click", changeSorting.bind(null, "name"))
+
+    const sortType = document.querySelector(`[data-sort="type"]`)
+    sortType.addEventListener("click", changeSorting.bind(null, "type"))
+
+    const sortDesc = document.querySelector(`[data-sort="desc"]`)
+    sortDesc.addEventListener("click", changeSorting.bind(null, "desc"))
+
+    const sortAge = document.querySelector(`[data-sort="age"]`)
+    sortAge.addEventListener("click", changeSorting.bind(null, "age"))
 }
 
-async function filterDogs() {
-    // download data
-    let data = await loadJSON()
-    // filter data
-    let filterData = data.filter(animal => {
-        return animal.type.includes("dog")
-    })
-    displayList(filterData)
+function changeSorting(value) {
+    // change global variable
+    SORT_BY.column = value
+    if (SORT_BY.order == 'asc') {
+        SORT_BY.order = 'desc'
+    } else {
+        SORT_BY.order = 'asc'
+    }
+    sort()
+    displayList()
 }
 
-async function filterAll() {
-    let data = await loadJSON()
-    displayList(data)
+function changeFiltering(column, value) {
+    FILTER_BY.column = column
+    FILTER_BY.value = value
+    filterData()
+    sort()
+    displayList()
 }
 
+// Model
 
-// Model (data loading, data modification)
+function sort() {
+    // sort data
+    function CompareNames(a, b) {
+        // this part reverses comparison (it's enough to change signs of return)
+        let ordering = -1
+        if (SORT_BY.order == 'desc') {
+            ordering = 1
+        }
+        // this part just sorts :)
+        if(a[SORT_BY.column] < b[SORT_BY.column]) {
+            return ordering
+        }
+        else if (a[SORT_BY.column] === b[SORT_BY.column]) {
+            if (a.type < b.type) {
+                return ordering
+            }
+        }
+        else {
+            return ordering * -1
+        }
+    }
+    CURRENT_DATA.sort(CompareNames)
+}
+
+async function filterData() {
+    await loadJSON()
+    if(FILTER_BY.column != '') {
+        CURRENT_DATA = CURRENT_DATA.filter(animal => {
+            return animal[FILTER_BY.column].includes(FILTER_BY.value)
+        })
+    }
+
+    sort()
+    displayList()
+}
 
 async function loadJSON() {
     const response = await fetch("animals.json");
     const jsonData = await response.json();
     // when loaded, prepare data objects
-    return prepareObjects( jsonData );
+    CURRENT_DATA = prepareObjects( jsonData );
 }
 
 function prepareObjects( jsonData ) {
     // creates a new global array with
     let allAnimals = jsonData.map( preapareObject );
 
-    // TODO: This might not be the function we want to call first
-    console.log("All animals array", allAnimals)
+    // console.log("All animals array", allAnimals)
     return allAnimals
 }
 
@@ -95,13 +149,13 @@ function preapareObject( jsonObject ) {
 
 // View (data display)
 
-function displayList(animals) {
+function displayList() {
     // clear the list
     document.querySelector("#list tbody").innerHTML = "";
 
     // build a new list
-    console.log(animals)
-    animals.forEach( displayAnimal );
+    // console.log(animals)
+    CURRENT_DATA.forEach( displayAnimal );
 }
 
 function displayAnimal( animal ) {
@@ -117,4 +171,3 @@ function displayAnimal( animal ) {
     // append clone to list
     document.querySelector("#list tbody").appendChild( clone );
 }
-
