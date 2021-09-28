@@ -1,0 +1,10 @@
+body {
+    display: flex;
+}
+
+#svg2 {
+    height: 700px;
+    width: auto;
+    padding-left: 50px;
+    padding-top: 30px;
+}
