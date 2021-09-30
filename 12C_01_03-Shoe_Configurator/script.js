@@ -1,54 +1,75 @@
 "use strict"
 
-// 1. There must be a palette with at least 8 colors
-// - you can load it as a SVG, or create it in the HTML
+let SELECTION = ""
 
-// 2. The user must be able to click any part of the image
-// (but can exclude the background) to fill within the outlines
+const COLORS = [
+    "blanchedalmond", "#feec73", 
+    "orange", "pink", "rgb(165, 27, 27)",
+    "rgb(90, 25, 16)", "#6c296c",
+    "rgb(24, 24, 75)", "#194519",
+    "rgb(60, 60, 60)", "rgb(196, 196, 196)", "white"
+]
 
-// 3. All color-selection and filling should be done by JavaScript.
-
-// 4. The cursor must clearly indicate if an area can be clicked or not
-
-// 5. Plan your colors and your shoe-image so you have some kind of
-// concept regarding the aestetics
+document.addEventListener("DOMContentLoaded", init)
 
 
-document.addEventListener("DOMContentLoaded", start)
+async function init() {
+    await fetchSvg()
+    createColorSelectors()
+    createShoeParts()
+}
 
-// fetching SVG from file and showing it into "section" tag
-async function start() {
+async function fetchSvg() {
     let response = await fetch("./shoe-01.svg")
     let mySvgData = await response.text()
     document.querySelector("#svgSection").innerHTML = mySvgData
-    startManipulatingTheSvg()
 }
 
-function startManipulatingTheSvg() {
+function createColorSelectors() {
+    const pallete = document.getElementById("colorPalette")
+    const tmpSquare = document.getElementById("colorTemplate")
 
-   
+    COLORS.forEach(color => {
+        let clone = tmpSquare.content.children[0].cloneNode(true)
+        clone.style.background = color
+        clone.addEventListener("click",
+            () => {
+                SELECTION.children[0].setAttribute("fill", color)
+            }
+        )
+        pallete.appendChild(clone)
+    })
+}
 
+function createShoeParts() {
+    let shoeParts = [
+        document.querySelector("#Tongue"),
+        document.querySelector("#Lace_cage"),
+        document.querySelector("#Front"),
+        document.querySelector("#Middle_front"),
+        document.querySelector("#Side_stripe"),
+        document.querySelector("#Middle_back"),
+        document.querySelector("#Hell_counter")
+    ]
+    document.querySelector("#Shadow_Image").style.pointerEvents = "none"
 
-
-
-
-
-
-
-
-
-
-
-
-    // document.addEventListener("click", changeEyesToRed)
-
-    // // changing elements to black when hovered over
-    // document.addEventListener("mouseover", function(event){
-    //     event.target.style.fill = "black"
-
-    // // changing elements to pink after 3s when elements had been hovered
-    //     setTimeout(function() {
-    //         event.target.style.fill = "pink"
-    //       }, 3000)
-    //     }, false)
+    shoeParts.forEach(part => {
+        part.classList.add("g_to_interact_with")
+        part.addEventListener("click", () => {
+            // this removes hoverOver from all parts
+            shoeParts.forEach(p => {
+                p.children[0].classList.remove("hoverOver")
+            })
+            part.children[0].classList.add("hoverOver")
+            SELECTION = part 
+        })
+        part.addEventListener("mouseover", () => {
+            part.children[0].classList.add("hoverOver")
+        })
+        part.addEventListener("mouseout", () => {
+            if(part != SELECTION) {
+                part.children[0].classList.remove("hoverOver")
+            }
+        })
+    })
 }

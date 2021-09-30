@@ -1,4 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Koh+Santepheap&display=swap');
+
+/* !! needed for event listeners in JS to work with paths */
+.g_to_interact_with path{
+    pointer-events: all;
+}
+
 h1 {
+    font-family: 'Koh Santepheap', cursive;
     text-align: center;
     margin-top: 50px;
     margin-bottom: 20px;
@@ -25,12 +33,16 @@ h1 {
     display: flex;
 }
 
-.square {
-height: 50px;
-width: 50px;
-background-color: rgb(255, 255, 255);
-border: 1px solid grey;
+.colorSquare {
+    height: 50px;
+    width: 50px;
+    border: 1px solid grey;
 
-margin-right: 2px;
-margin-left: 2px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.hoverOver {
+    stroke: rgb(65, 65, 65);
+    stroke-width: 2px;
 }
