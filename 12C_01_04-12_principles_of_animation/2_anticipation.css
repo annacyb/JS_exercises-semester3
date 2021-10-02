@@ -1,0 +1,25 @@
+.disappear {
+    animation-name: disappear_box;
+  
+    animation-delay: 0.25s;
+    /* animation-iteration-count: infinite; */
+    transition-timing-function: ease-out;
+    transform-origin: center;
+    animation-duration: 3s;
+    transition: transform 3s cubic-bezier(.11,.98,.69,.54);
+  }
+  
+  @keyframes disappear_box {
+    0% {
+      transform: translateY(0vh);
+    }
+  
+    30% {
+      transform: translateY(-10vh);
+    }
+  
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+  

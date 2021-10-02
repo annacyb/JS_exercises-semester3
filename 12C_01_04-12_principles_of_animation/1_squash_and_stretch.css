@@ -1,0 +1,52 @@
+.bounce {
+  left: 5em;
+  animation-name: bounce;
+  animation-duration: 2s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(10);
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: translateY(var(--bottom));
+  }
+  48% {
+    transform: translateY(var(--bottom));
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(var(10));
+  }
+}
+
+ 
+.squash {
+animation-name: squash;
+animation-duration: 2s;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+animation-timing-function: linear;
+}
+
+@keyframes squash {
+0% {
+  transform: scale(1, 1);
+}
+40% {
+    transform: scale(1, 1);
+  }
+45% {
+  transform: scale(0.8, 1.2);
+}
+48% {
+  transform: scale(1.5, 0.5);
+}
+52% {
+  transform: scale(0.8, 1.2);
+}
+}

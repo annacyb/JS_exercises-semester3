@@ -1,0 +1,18 @@
+.active {
+    animation-name: active_kf;
+    animation-iteration-count: 1;
+    transition-timing-function: ease-out;
+    animation-duration: 2s;
+    z-index: 1000;
+  }
+  
+  @keyframes active_kf {
+    0% {
+      transform: translateX(-100vw);
+    }
+  
+    100% {
+      transform: translateX(0vw);
+    }
+  }
+  

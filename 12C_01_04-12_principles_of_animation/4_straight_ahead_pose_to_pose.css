@@ -1,0 +1,42 @@
+.squash {
+    animation-name: squash_ball;
+    animation-iteration-count: infinite;
+    transition-timing-function: linear;
+    animation-duration: 3s;
+    transition: cubic-bezier(0.7, 0, 0.84, 0);
+  }
+  
+  @keyframes squash_ball {
+    0% {
+      transform: translateX(0) rotate(0deg);
+      animation-timing-function: ease-in;
+    }
+    15% {
+      transform: translateX(15vw) translateY(var(--bottom)) rotate(60deg);
+      animation-timing-function: ease-out;
+    }
+    35% {
+      transform: translateX(20vw) translateY(10vw) rotate(100deg);
+      animation-timing-function: ease-in;
+    }
+    50% {
+      transform: translateX(25vw) translateY(var(--bottom)) rotate(150deg);
+      animation-timing-function: ease-out;
+    }
+    65% {
+      transform: translateX(32vw) translateY(20vw) rotate(190deg);
+      animation-timing-function: ease-in;
+    }
+    80% {
+      transform: translateX(35vw) translateY(var(--bottom)) rotate(220deg);
+      animation-timing-function: ease-out;
+    }
+    90% {
+      transform: translateX(40vw) translateY(25vw) rotate(230deg);
+      animation-timing-function: ease-in;
+    }
+    100% {
+      transform: translateX(45vw) translateY(var(--bottom)) rotate(240deg);
+    }
+  }
+  
