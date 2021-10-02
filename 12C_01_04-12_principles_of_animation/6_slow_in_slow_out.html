@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slow in, slow out - 12 Principles of Animation</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="6_slow_in_slow_out.css" />
+  </head>
+  <body>
+    <h2>12 Principles of Animation</h2>
+    <div id="sidebyside">
+      <div>
+        <h1>Slow in, slow out</h1>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/fQBFsTqbKhY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <dl>
+          <dt>Classic example:</dt>
+          <dd>A character that starts running, slow start, then fast.</dd>
+          <dd>A character that stops running, slowing down, then stopping.</dd>
+          <dt>UI example:</dt>
+          <dd>Menus scrolling into view or out again.</dd>
+          <dt>Connections:</dt>
+          <dd>Always connected with timing!</dd>
+          <dt>Typical CSS</dt>
+          <dd><code>animation-timing-function</code> <code>ease-in</code> and <code>ease-out</code></dd>
+          <dt>Pros</dt>
+          <dd>Makes things look less mechanical</dd>
+          <dt>Cons</dt>
+          <dd>Requires you to remember to always use timing-functions ...</dd>
+          <dt>Notes</dt>
+          <dd>...</dd>
+        </dl>
+      </div>
+      <div>
+        <h3>Example:</h3>
+        <div id="stage">
+          <div id="menu">
+            <div class="clickable togglemenu">Show menu</div>
+            <nav class="show">
+              <ul>
+                <li><a href="#front">Frontpage</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <p>
+          Add CSS for the <code>.show</code> and <code>.hide</code> classes, so that the nav translates in and out.<br />
+          Use the correct timing-functions, to show and hide (remember slow in, slow out - and ease is the opposite!).<br />
+          If you feel like it, use cubic-bezier timings that add a little anticipation, maybe a little follow through.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      document.querySelector(".togglemenu").addEventListener("click", toggleMenu);
+
+      let menuactive = true;
+
+      function toggleMenu() {
+        if (menuactive) {
+          menuactive = false;
+          document.querySelector("nav").classList.remove("show");
+          document.querySelector("nav").classList.add("hide");
+        } else {
+          menuactive = true;
+          document.querySelector("nav").classList.add("show");
+          document.querySelector("nav").classList.remove("hide");
+        }
+      }
+    </script>
+  </body>
+</html>

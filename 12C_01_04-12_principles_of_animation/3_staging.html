@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Staging - 12 Principles of Animation</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="3_staging.css" />
+  </head>
+  <body>
+    <h2>12 Principles of Animation</h2>
+    <div id="sidebyside">
+      <div>
+        <h1>Staging</h1>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/u-SXLaQGg50" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <dl>
+          <dt>Classic example:</dt>
+          <dd>
+            No clear example - moving into foreground, getting the viewer's attention.
+          </dd>
+          <dt>UI example:</dt>
+          <dd>Dialog boxes - scrolling into view.</dd>
+          <dd>Animating changes to show the user what is happening.</dd>
+          <dd>Animating one thing at a time, to avoid confusing the user.</dd>
+          <dt>Connections:</dt>
+          <dd>
+            Often combined with slow in, slow out and arcs.
+          </dd>
+          <dt>Typical CSS</dt>
+          <dd><code>z-index, scale, translate-z, scroll-behavior, pulsating animations</code></dd>
+          <dt>Pros</dt>
+          <dd>Controls the user's attention</dd>
+          <dt>Cons</dt>
+          <dd>No cons, only when not applied</dd>
+          <dt>Notes</dt>
+          <dd>...</dd>
+        </dl>
+      </div>
+      <div>
+        <h3>Example:</h3>
+        <div id="stage">
+
+          <div id="menu">
+          <nav>
+            <a href="#stars">⭐</a>
+            <a href="#settings">⚙️</a>
+            <a href="#search">🔍</a>
+          </nav>
+
+          <div id="content">
+            <section id="stars" class="active">
+              <h1>Stars</h1>
+              <hr>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores possimus perferendis sed non, quae quidem! Totam, quasi necessitatibus! Magni, tenetur a? Labore, maxime ullam impedit ex vitae nam mollitia quia.</p>
+            </section>
+            <section id="settings">
+              <h1>Settings</h1>
+              <hr>
+              <p>Quia esse ex placeat veritatis consectetur fugiat ipsa hic necessitatibus facere impedit, sint tempore temporibus ducimus expedita et repudiandae, nisi quibusdam quo omnis eaque aliquam. Provident rem consectetur fugit numquam!</p>
+            </section>
+            <section id="search">
+              <h1>Search</h1>
+              <hr>
+              <p>Vitae perspiciatis a maxime officia nobis accusamus hic minima dignissimos debitis ullam, ad vel nostrum dolorum delectus saepe iste earum ut quasi facere fugit, accusantium obcaecati quaerat consectetur. Necessitatibus, qui?</p>
+            </section>
+          </div>
+        </div>
+
+        </div>
+        <p>Add CSS so that the <code>.active</code> class has an animation, e.g. slide in from the left.<br>
+        You can do it with just a simple transition rule on the element or container, it shouldn't be
+      necessary with a complete keyframe animation.</p>
+      </div>
+    </div>
+
+    <script>
+      // Clicking the menu-items should set the .active class on the section matching the menu-link
+      document.querySelectorAll("nav a").forEach( menu => menu.addEventListener("click", showMenu));
+
+      function showMenu( event ) {
+        // Don't follow the link!
+        event.preventDefault();
+
+        // remove current active
+        document.querySelector("#content .active").classList.remove("active");
+
+        // find href, and set that to active 
+        const href = event.target.getAttribute("href"); // NOTE: Use getAttribute rather than .href to avoid getting the FULL URI
+        document.querySelector(`#content section${href}`).classList.add("active");
+      }
+
+
+    </script>
+
+  </body>
+</html>

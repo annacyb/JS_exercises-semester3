@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arcs - 12 Principles of Animation</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="7_arc.css" />
+  </head>
+  <body>
+    <h2>12 Principles of Animation</h2>
+    <div id="sidebyside">
+      <div>
+        <h1>Arcs</h1>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/I1_tZ9LhJD4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <dl>
+          <dt>Classic example:</dt>
+          <dd>A ball follows an arc (a curve), A person bends their body.</dd>
+          <dt>UI example:</dt>
+          <dd>A "buy" icon swooping up the screen and into the basket.</dd>
+          
+          <dt>Connections:</dt>
+          <dd>When a linear animation in X-direction is combined with slow-in and slow-out in Y-direction, this actually creates an arc.</dd>
+          <dd>Also often combined with anticipation or follow_through.</dd>
+          <dt>Typical CSS</dt>
+          <dd>Moving a container with linear translateX, and moving the element with ease-in, ease-out translateY</dd>
+          <dd><code>offset-path</code> for actual arcs!</dd>
+          <dt>Pros</dt>
+          <dd>Makes movement look "smooth" and natural/organic</dd>
+          <dt>Cons</dt>
+          <dd>hard to calculate responsive coordinated outside of SVG - but no cons for the user once it works!</dd>
+          <dt>Notes</dt>
+          <dd>...</dd>
+        </dl>
+      </div>
+      <div>
+        <h3>Example:</h3>
+        <div id="stage">
+          
+          <div id="cart">🛒</div>
+          
+          <button id="buy">Add to cart</button>
+          
+        </div>
+        <p>
+          First create a class <code>addtocart</code> with a basic translate animation, that moves the button to the cart, when clicked.<br>
+          It is translated approximately 220, -140 pixels.</p>
+          <p>Then create a simple offset-path with just a single <b>m</b> and <b>c</b> (both lower-case), that goes in a straight line with 
+            the same coordinates as the translate - meaning the c followed by 0 0 0 0 and then the end coordinates.<br>
+            Make the animation use the offset-distance rather than translate - you might have to modify the starting coordinates, but that should replicate the straight line animation.<br>
+            Then start moving the control-points up, and watch the arc be more and more arched ... 
+          </p>
+        <p>Make a crazier curve if you feel like it ...
+          
+          
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const button = document.querySelector("button#buy");
+      button.addEventListener("click", addToCart);
+
+      function addToCart() {
+        button.classList.add("addtocart");
+        button.addEventListener("animationend", resetAnimation);
+      }
+
+      function resetAnimation() {
+        button.classList.remove("addtocart");
+        button.removeEventListener("animationend", resetAnimation);
+      }
+    </script>
+  </body>
+</html>

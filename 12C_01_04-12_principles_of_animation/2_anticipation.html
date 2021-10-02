@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anticipation - 12 Principles of Animation</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="2_anticipation.css" />
+  </head>
+  <body>
+    <h2>12 Principles of Animation</h2>
+    <div id="sidebyside">
+      <div>
+        <h1>Anticipation</h1>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/F8OtE60T8yU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <dl>
+          <dt>Classic example:</dt>
+          <dd>Preparing for an action, crouching before leaping, pull back before punching.</dd>
+          <dt>UI example:</dt>
+          <dd>Highlight or scale an image before clicking.</dd>
+          <dd>
+            Moving dialog box a bit up, before moving out.<br />
+            <a href="https://vimeo.com/162712110">https://vimeo.com/162712110</a>
+          </dd>
+          <dt>Connections:</dt>
+          <dd>Often combined with squash and stretch or exaggeration, as well as follow through.</dd>
+          <dt>Typical CSS</dt>
+          <dd>
+            <code><a href="https://cubic-bezier.com/">cubic bezier</a> timing function with negative start</code>
+          </dd>
+          <dt>Pros</dt>
+          <dd>Affords user interaction by giving elements a physical feel</dd>
+          <dd>Makes the UI feel more "lively"</dd>
+          <dt>Cons</dt>
+          <dd>Can look quite cartoonish if exaggerated</dd>
+          <dt>Notes</dt>
+          <dd>...</dd>
+        </dl>
+      </div>
+      <div>
+        <h3>Example:</h3>
+        <div id="stage">
+          <div id="dialog">
+            <h1>Dialog</h1>
+            <p>Click on the close-button to make this dialog disappear</p>
+            <button>Close</button>
+          </div>
+        </div>
+        <p>
+          Create a disappear class with keyframe-animation that slides the dialog-box out the bottom of the screen.<br />
+          Give it a cubic-bezier timing function that makes it go a little in the opposite direction first.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const dialog = document.querySelector("#dialog");
+      dialog.querySelector("button").addEventListener("click", closeDialog);
+
+      function closeDialog() {
+        dialog.classList.add("disappear");
+        dialog.addEventListener("animationend", resetDialog);
+      }
+
+      function resetDialog() {
+        dialog.classList.remove("disappear");
+        dialog.removeEventListener("animationend", resetDialog);
+      }
+    </script>
+  </body>
+</html>

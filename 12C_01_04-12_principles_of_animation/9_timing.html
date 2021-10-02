@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timing - 12 Principles of Animation</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="9_timing.css" />
+  </head>
+  <body>
+    <h2>12 Principles of Animation</h2>
+    <div id="sidebyside">
+      <div>
+        <h1>Timing</h1>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/BarOk2p38LQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <dl>
+          <dt>Classic example:</dt>
+          <dd>Framerates - fluidity - number of drawings between endpoints, and how much it changes.</dd>
+          <dt>UI example:</dt>
+          <dd>Mostly timing-functions (easing).</dd>
+          <dt>Connections:</dt>
+          <dd>Often combined with slow in, slow out, anticipation, and follow through.</dd>
+          <dt>Typical CSS</dt>
+          <dd><code>animation-timing-function</code> and <code>animation-duration</code></dd>
+          <dt>Pros</dt>
+          <dd>Gives a fluid feel to animations - makes them look "realer"</dd>
+          <dt>Cons</dt>
+          <dd>No cons, always consider timing!</dd>
+          <dt>Notes</dt>
+          <dd>...</dd>
+        </dl>
+      </div>
+      <div>
+        <h3>Example:</h3>
+        <div id="stage">
+          <div class="container">
+            <p>Linear</p>
+            <div class="ball linear"></div>
+          </div>
+          <div class="container">
+            <p>Ease</p>
+            <div id="ball2" class="ball ease"></div>
+          </div>
+          <div class="container">
+            <p>Ease-in</p>
+            <div id="ball3" class="ball ease-in"></div>
+          </div>
+          <div class="container">
+            <p>Ease-out</p>
+            <div id="ball4" class="ball ease-out"></div>
+          </div>
+          <div class="container">
+            <p>Ease-in-out</p>
+            <div id="ball5" class="ball ease-in-out"></div>
+          </div>
+          <div class="container">
+            <p>Steps</p>
+            <div id="ball6" class="ball steps"></div>
+          </div>
+        </div>
+        <p>
+          Create an animation class for each ball.<br />
+          Make all the balls move from left to right in 2seconds, the only difference should be the timing function.<br />
+          Use the timing-function described by the class. For steps, experiment with different number of steps.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

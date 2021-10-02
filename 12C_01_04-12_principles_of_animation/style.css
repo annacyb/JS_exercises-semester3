@@ -1,0 +1,143 @@
+dt {
+  font-weight: bold;
+}
+
+#sidebyside {
+  display: flex;
+  gap: 2em;
+}
+
+#sidebyside div + div {
+  flex-grow: 1;
+}
+
+#stage {
+  position: relative;
+  border: 2px solid black;
+  width: 100%;
+  height: 82vh;
+  --bottom: calc(82vh - 10vw);
+  overflow: hidden;
+}
+
+#menu {
+  max-width: 20vw;
+}
+
+#menu nav {
+  font-size: 300%;
+  filter: grayscale(1);
+}
+
+#menu nav a {
+  text-decoration: none;
+}
+
+#menu #content {
+  position: relative;
+  padding: 1em;
+}
+
+#menu #content section {
+  position: absolute;
+  background-color: #fff;
+}
+/* 
+#menu section.active {
+  opacity: 1;
+}
+
+#menu section:not(.active) {
+  opacity: 0;
+} */
+
+#container {
+  position: absolute;
+  outline: 4px dashed orange;
+}
+
+.container {
+  height: 7vw;
+  border: 2px dashed lightgray;
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.container p {
+  margin-top: 0;
+}
+
+.ball {
+  position: absolute;
+  width: 5vw;
+  height: 5vw;
+  bottom: 0;
+  left: 0;
+  background-image: url(beachball.svg);
+  background-size: 100%;
+}
+
+.make-background {
+  position: absolute;
+  width: 56vw;
+}
+
+#ball {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  background-image: url(beachball.svg);
+  background-size: 100%;
+  /* outline: 2px dashed red; */
+  /* transform: translateY( calc(82vh - 10vw)); */
+}
+
+#dialog {
+  max-width: 25vw;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px -4px #aaa;
+}
+
+#dialog h1 {
+  font-size: 140%;
+}
+
+.clickable {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.fall {
+  animation: fall 1s linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(var(--bottom));
+  }
+}
+
+#cart {
+  font-size: 30px;
+  position: absolute;
+  left: 300px;
+  top: 50px;
+  background-color: lightsteelblue;
+    
+  padding: 10px 25px 10px 25px;
+}
+
+button#buy {
+  padding: 8px;
+  position: absolute;
+  /* target coordinates:
+  left: 303px;
+  top: 60px; */
+  /* Start coordinates */
+  left: 80px;
+  top: 200px;
+}

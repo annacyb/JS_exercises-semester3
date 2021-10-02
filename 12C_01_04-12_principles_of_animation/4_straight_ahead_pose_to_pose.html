@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Straight Ahead or Pose to Pose - 12 Principles of Animation</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="4_straight_ahead_pose_to_pose.css">
+</head>
+<body>
+  <h2>12 Principles of Animation</h2>
+  <div id="sidebyside">
+    <div>
+  <h1>Straight ahead vs Pose to Pose</h1>
+
+    
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/v8quCbt4C-c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <dl>
+    <dt>Classic example:</dt>
+    <dd>No real example, mostly a way of designing animations: drawing every frame, or drawing only keyframes, and filling them in later.</dd>
+    <dt>UI example:</dt>
+    <dd>Almost always pose to pose, since we define keyframes - starting from the extremes, and going in to more and more details.</dd>
+    <dt>Connections:</dt>
+    <dd>Almost always connected with arcs and timing, especially slow in and slow out.</dd>
+    <dt>Typical CSS</dt>
+    <dd><code>@keyframes</code> - lot's of them</dd>
+    <dt>Pros</dt>
+    <dd>Having lots of keyframes can give very dynamic, very organic looking animations.</dd>
+    <dt>Cons</dt>
+    <dd>They are a hassle to design ...</dd>
+    <dt>Notes</dt>
+    <dd>...</dd>
+  </dl>
+</div>
+<div>
+  <h3>Example:</h3>
+  <div id="stage">
+    <img src="bouncingball.gif" class="make-background">
+    <div id="container">
+      <div id="ball" class="squash"></div>
+    </div>
+
+  </div>
+  <p>Make the beachball follow the path of the blue ball in the gif-animation.<br>
+  Don't worry about synchronizing their movement, you can't do that with a gif - but it takes approximately 2.58 seconds to complete.<br>
+  Start without any animation, and identify the extremes of the path - the start and the end. Use <code>transform: translate( )</code> with <code>vw</code> as units.
+  Keep all the transform-lines, but comment each one out, as you try to find the next one.<br>
+  After having found the extremes, find the top and bottom of each 'bounce' along the path.</p>
+  <p>When you have enough points, make a @keyframes animation, and put all the transforms at various times - use the x-axis on the path
+    as a guide: 0% would be the start, 100% the end, the first bounce around 30-35%.<br>
+    Use linear timing-function, and see how close (or not) the animation follows the path.
+  </p>
+  <p>If you want to improve the animation, you'll have to use different timing on x and y-axis - this will be in part 9. Timing!<br>
+  But you can revisit this exercise, and make the container do the x-translation, and make the ball only do the y-translation.<br>
+x would still be linear.</p>
+
+
+</p>
+
+</div>
+
+</div>
+
+
+  
+</body>
+</html>

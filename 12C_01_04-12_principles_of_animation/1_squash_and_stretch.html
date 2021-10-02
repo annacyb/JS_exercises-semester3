@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Squash and Stretch - 12 Principles of Animation</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="1_squash_and_stretch.css">
+</head>
+<body>
+  <h2>12 Principles of Animation</h2>
+  <div id="sidebyside">
+    <div>
+  <h1>Squash and Stretch</h1>
+
+    
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/haa7n3UGyDc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <dl>
+    <dt>Classic example:</dt>
+    <dd>The bouncing ball that squashes on impact, stretches when flying.</dd>
+    <dt>UI example:</dt>
+    <dd>A disappearing dialog box.</dd>
+    <dt>Connections:</dt>
+    <dd>Often combined with anticipation or exaggeration.</dd>
+    <dt>Typical CSS</dt>
+    <dd><code>transform: scale</code></dd>
+    <dt>Pros</dt>
+    <dd>Gives a physical feel to elements</dd>
+    <dt>Cons</dt>
+    <dd>Can look quite cartoonish</dd>
+    <dt>Notes</dt>
+    <dd>...</dd>
+  </dl>
+</div>
+<div>
+  <h3>Example:</h3>
+  <div id="stage">
+    <div id="container" class="bounce">
+      <div id="ball" class="squash"></div>
+    </div>
+  </div>
+  <p>Create the bounce and squash classes with keyframes.<br>
+  Bounce from translateY(0) to translateY(var(--bottom)).<br>
+  The trick is to only squash a tiny bit, and only during very few keyframes.</p>
+
+</div>
+
+</div>
+
+
+  
+</body>
+</html>
