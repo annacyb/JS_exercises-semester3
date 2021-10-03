@@ -1,0 +1,40 @@
+.show {
+    animation-name: show_menu;
+    animation-iteration-count: 1;
+    transition-timing-function: ease-in-out;
+    animation-duration: 3s;
+    transition: cubic-bezier(0.7, 0, 0.84, 0);
+  }
+  
+  @keyframes show_menu {
+    0% {
+      transform: translateX(-100vw);
+    }
+  
+    100% {
+      transform: translateX(0vw);
+    }
+  }
+  
+  .hide {
+    animation-name: hide_menu;
+    animation-iteration-count: 1;
+    transition-timing-function: ease-in-out;
+    animation-duration: 10s;
+    transition: cubic-bezier(0.7, 0, 0.84, 0);
+  }
+  
+  @keyframes hide_menu {
+    0% {
+      transform: translateX(0vw);
+    }
+  
+    100% {
+      transform: translateX(-100vw);
+    }
+  }
+  
+
+  .hidden {
+      display: none;
+  }

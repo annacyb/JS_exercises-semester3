@@ -1,0 +1,191 @@
+.linear {
+    animation-name: linear_kf;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate-reverse;
+  }
+  
+  @keyframes linear_kf {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(60vw);
+    }
+  }
+  
+  .ease {
+    animation-name: ease_kf;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    animation-direction: alternate-reverse;
+  }
+  
+  @keyframes ease_kf {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(60vw);
+    }
+  }
+  
+  .ease-in {
+    animation-name: ease-in_kf;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    animation-direction: alternate-reverse;
+  }
+  
+  @keyframes ease-in_kf {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(60vw);
+    }
+  }
+  
+  .ease-out {
+    animation-name: ease-out_kf;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    animation-direction: alternate-reverse;
+  }
+  
+  @keyframes ease-out_kf {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(60vw);
+    }
+  }
+  
+  .ease-in-out {
+    animation-name: ease-in-out_kf;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate-reverse;
+  }
+  
+  @keyframes ease-in-out_kf {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(60vw);
+    }
+  }
+  
+  .steps {
+    animation-name: steps_kf;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate-reverse;
+    /* offset-path: path("m 40 30, c 0 -100, 0 -200, 220 -140"); */
+  }
+
+  @keyframes steps_kf {
+    0% {
+      transform: translateX(0);
+      opacity: 100%;
+    }
+    3% {
+        opacity: 0%;
+    }
+    7% {
+        opacity: 0%;
+    }
+    10% {
+        opacity: 100%;
+    }
+    13% {
+        opacity: 0%;
+    }
+    17% {
+        opacity: 0%;
+    }
+    20% {
+        opacity: 100%;
+    }
+    23% {
+        opacity: 0%;
+    }
+    27% {
+        opacity: 0%;
+    }
+    30% {
+        opacity: 100%;
+    }
+    33% {
+        opacity: 0%;
+    }
+    37% {
+        opacity: 0%;
+    }
+    40% {
+        opacity: 100%;
+    }
+    43% {
+        opacity: 0%;
+    }
+    47% {
+        opacity: 0%;
+    }
+    50% {
+        opacity: 100%;
+    }
+    53% {
+        opacity: 0%;
+    }
+    57% {
+        opacity: 0%;
+    }
+    60% {
+        opacity: 100%;
+    }
+    63% {
+        opacity: 0%;
+    }
+    67% {
+        opacity: 0%;
+    }
+    70% {
+        opacity: 100%;
+    }
+    73% {
+        opacity: 0%;
+    }
+    77% {
+        opacity: 0%;
+    }
+    80% {
+        opacity: 100%;
+    }
+    83% {
+        opacity: 0%;
+    }
+    87% {
+        opacity: 0%;
+    }
+    90% {
+        opacity: 100%;
+    }
+    93% {
+        opacity: 0%;
+    }
+    97% {
+        opacity: 0%;
+    }
+    100% {
+      transform: translateX(60vw);
+    } 
+  }
+  

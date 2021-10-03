@@ -1,0 +1,31 @@
+/* .addtocart {
+  animation-name: addtocart_kf;
+  animation-iteration-count: 1;
+  transition-timing-function: ease-in-out;
+  animation-duration: 3s;
+
+  offset-path: path("m 10 15 c 0 0 0 0 220 -140");
+}
+
+@keyframes addtocart_kf {
+  0% {
+    transform: translate(0);
+  }
+
+  100% {
+    transform: translate(220px, -140px);
+  }
+} */
+
+.addtocart {
+    animation: arc 2s ease-in-out;
+    offset-path: path("m 40 30, c 0 -100, 0 -200, 220 -140");
+  }
+  
+  @keyframes arc {
+    100% {
+      /* transform: translate(220px, -140px); */
+      offset-distance: 100%;
+    }
+  }
+  
