@@ -2,9 +2,13 @@
     margin-top: 100px;
 }
 
+span {
+    min-width: 5px;
+}
+
 .effect {
     animation: fadeIn;
-    animation-delay: 0.25s;
+    display: inline-block;
     animation-iteration-count: 1;
     transition-timing-function: ease-out;
     animation-duration: 1.5s;
@@ -12,9 +16,11 @@
 
 @keyframes fadeIn {
     0% {
+        opacity: 0;
         transform: translateY(5vh);
     }
     70% {
+        opacity: 1;
         transform: translateY(-1vh);
       }
     100% {
