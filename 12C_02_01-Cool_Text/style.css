@@ -1,0 +1,23 @@
+#coolText {
+    margin-top: 100px;
+}
+
+.effect {
+    animation: fadeIn;
+    animation-delay: 0.25s;
+    animation-iteration-count: 1;
+    transition-timing-function: ease-out;
+    animation-duration: 1.5s;
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: translateY(5vh);
+    }
+    70% {
+        transform: translateY(-1vh);
+      }
+    100% {
+        transform: translateY(0vh);
+      }
+  }
