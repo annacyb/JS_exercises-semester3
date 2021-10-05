@@ -2,6 +2,40 @@
 
 //NEW LINE
 const colorAndHarmonyChosen = { mainColor: {}, harmony: "" }
+// const colorsFromHarmony = {color1: {hex: 100, rgb: 200, hsl: 300}, color2: {hex: 400, rgb: 500, hsl: 600}, color3: {hex: 700, rgb: 800, hsl: 900}, color4: {hex: 1000, rgb: 1100, hsl: 1200}}
+// const colorsFromHarmonyArray = [{color1: {hex: 100, rgb: 200, hsl: 300}}, {color2: {hex: 400, rgb: 500, hsl: 600}}, {color3: {hex: 700, rgb: 800, hsl: 900}}, {color4: {hex: 1000, rgb: 1100, hsl: 1200}}]
+
+//ZLE-POTEM WYKASOWAC
+//  ZLE PONIEWAZ TRZEBA ZA KAZDYM RAZEM UPDATOWAC ROZNE RODZAJE FORMATOW KOLOROW --- LATWO ZAPOMNIEC / POGUBIC SIE
+//  ZLE PONIEWAZ ZAJMUJE WIECEJ MIEJSCA W PAMIECI A OPISUJE DEFACTO TEN SAM KOLOR
+//  LEPIEJ TRZYMAC JEDEN RODZAJ KOLORU I TAM GDZIE TRZEBA ZAMIENIC SOBIE NA INNY PRZEZ FUNKCJE
+const colorsFromHarmonyArray = [
+    {hex: 100, rgb: {r: 10, g: 10, b: 10}, hsl: 300}, 
+    {hex: 400, rgb: {r: 10, g: 10, b: 10}, hsl: 600}, 
+    {hex: 700, rgb: {r: 10, g: 10, b: 10}, hsl: 900}, 
+    {hex: 1000, rgb: {r: 10, g: 10, b: 10}, hsl: 1200}
+]
+
+//DOBRE-DOBRA FORMA
+const RGBcolors = [
+    {r: 10, g: 10, b: 10},
+    {r: 10, g: 10, b: 10},
+    {r: 10, g: 10, b: 10},
+    {r: 10, g: 10, b: 10},
+]
+
+function RGBtoHSL2(color) {
+    return {h: 10, s: 20, l: 30}
+}
+
+let HSLcolors = []
+RGBcolors.forEach(color => {
+    HSLcolors.push(RGBtoHSL2(color))
+})
+
+
+
+
 
 // window.addEventListener("DOMContentLoaded", init)
 
@@ -13,11 +47,10 @@ function setEventListeners() {
     colorPickerElement.addEventListener("input", init)
     
     // for select element with many options to choose by the user
-    let selectElement = document.querySelector("#optionsForChoosing").addEventListener("click", getHarmony)
+    let selectElement = document.querySelector("#optionsForChoosing").addEventListener("input", getHarmony)
 }
 
 function init() {
-    setEventListeners()
     const selectedColor = getColor()
     console.log(colorAndHarmonyChosen.mainColor.HEX)
     const convertedData = prepareData(colorAndHarmonyChosen.mainColor.HEX)
@@ -26,7 +59,6 @@ function init() {
     colorAndHarmonyChosen.mainColor.RGB = convertedData.rgb
     colorAndHarmonyChosen.mainColor.HSL = convertedData.hsl
     
-    // // console.log(convertedData)
     showColor(convertedData)
 }
 
@@ -118,15 +150,15 @@ function RGBtoHSL(rgb) {
 
 // getting 4 more colors which creates harmony with the main color
 
-function getHarmony(colorData) {
+function getHarmony() {
     let optionChosen = document.querySelector("#optionsForChoosing").value
-
-    console.log(colorData)
+    const mainColorData = colorAndHarmonyChosen.mainColor
+    // console.log(mainColorData)
 
     if (optionChosen == "0") {
     }
     if (optionChosen == "1.Analogous") {
-        calculateAnalogus(colorData)
+        calculateAnalogus(mainColorData)
     }
     if (optionChosen == "2.Monochromatic") {
 
@@ -145,8 +177,43 @@ function getHarmony(colorData) {
     }
 }
 
-function calculateAnalogus(colorData) {
+function calculateAnalogus(mainColorData) {
+    // H is shifted some degrees for each color, S and L are kept constant
+    const mainColorH = mainColorData.HSL.h
+    console.log("tutaj", mainColorH)
     
+    // let previousNumber 
+
+    // Object.keys(colorsFromHarmony).forEach(key => {
+    //     // console.log(key, colorsFromHarmony[key])
+
+    //   })
+
+    console.log(colorsFromHarmonyArray)
+    
+    // const foundValue = colorsFromHarmonyArray.find(o => o.name === 'string 1');
+
+    
+    colorsFromHarmonyArray.forEach((color, index) => {
+        color.hsl = color.hsl + 60 * (index + 1)
+        color.rgb.r = Math.random()
+    })
+
+    console.log(colorsFromHarmonyArray)
+
+    // const foundValue = colorsFromHarmonyArray.find(findColorProperty)     
+    // function findColorProperty(i) { 
+    //     let hsl1 = i.hsl1
+    //     hsl1 = "9999999"
+    //     console.log(colorsFromHarmonyArray)
+    // }
+
+   
+
+    
+    // for(let i=0; i<4; i++) {
+    //     arrOfColors[i] = Object.assign({}, hslObject)
+    // }
 }
 
 
@@ -161,9 +228,6 @@ function calculateAnalogus(colorData) {
 
 // arrofColors[1].h = 11
 // console.log(arrofColors)
-
-
-
 
 
 
