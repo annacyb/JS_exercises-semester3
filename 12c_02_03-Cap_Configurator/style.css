@@ -7,6 +7,7 @@
   grid-template-areas: "product options"
                        "features features";
   gap: 1em;
+  grid-template-rows: 65vh;
 }
 
 #product-preview {
@@ -19,10 +20,10 @@
 
 #product-preview img {
   position: absolute;
-  width: 100%;
+  width: 60vh;
   height: auto;
   top: 0;
-  left: 0;
+  left: 10vw;
 }
 
 #product-preview .hide {
@@ -62,7 +63,7 @@
 }
 
 #options .option img {
-  width: 7vw;
+  width: 10vh;
   height: auto;
 }
 
@@ -83,16 +84,42 @@
 }
 
 #selected ul li img {
-  width: 3em;
+  width: 5em;
+  margin-left: 1em;
 }
 
 /* Animation classes */
 
 .animate-feature-in {
-  /* TODO: Create animation for adding a feature */
-  
+  /* DONE: Create animation for adding a feature */
+  animation-name: animate-feature-in_kf;
+  animation-iteration-count: 1;
+  animation-duration: 2s;
+}
+@keyframes animate-feature-in_kf {
+  0% {
+    transform: translate(var(--diffx), var(--diffy)) scale(0);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 .animate-feature-out {
-  /* TODO: Create animation for removing a feature */
+  /* DONE: Create animation for removing a feature */
+  animation-name: animate-feature-out_kf;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+  animation-direction: reverse;
 }
+@keyframes animate-feature-out_kf {
+  0% {
+    transform: translate(var(--diffx), var(--diffy)) scale(0);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+

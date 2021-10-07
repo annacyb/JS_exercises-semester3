@@ -22,28 +22,11 @@ function toggleOption(event) {
   const feature = target.dataset.feature
   console.log("FEATURE ", feature)
 
-  // TODO: Toggle feature in "model"
-
-  // If feature is (now) turned on:
-  // + mark target as chosen (add class "chosen")
-  // + un-hide the feature-layer(s) in the #product-preview;
-  // - create featureElement and append to #selected ul
-  // - create FLIP-animation to animate featureElement from img in target, to
-  //   its intended position. Do it with normal animation or transition class!
-
-  // Else - if the feature (became) turned off:
-  // + no longer mark target as chosen
-  // + hide the feature-layer(s) in the #product-preview
-  // - find the existing featureElement in #selected ul
-  // - create FLIP-animation to animate featureElement to img in target
-  // - when animation is complete, remove featureElement from the DOM
-  
   // feature added
   if (features[feature] == true) {
-    console.log(features[feature])
-    features[feature] = false
+   
     target.classList.remove("chosen")
-    const featureImage = document.querySelector([feature])
+    features[feature] = false
 
     //Add the hide class from fetured elements (layers) on main photo
     if (feature === "shield") {
@@ -56,16 +39,36 @@ function toggleOption(event) {
 
     //Remove featureElement from the list in the bottom
     const selectedFeature = document.querySelector(`#selected [data-feature="${feature}"]`)
-    selectedFeature.remove()
+    // selectedFeature.remove()
 
-    // TODO: More code
+    //FLIP- "animate-feature-out"
+    const end = selectedFeature.getBoundingClientRect()
+    const start = target.getBoundingClientRect()
+
+    const diffx = start.x - end.x + "px"
+    const diffy = start.y - end.y + "px"
+
+    selectedFeature.style.setProperty("--diffx", diffx)
+    selectedFeature.style.setProperty("--diffy", diffy)
+
+    selectedFeature.offsetHeight
+
+    //Animation feature out
+    selectedFeature.classList = "animate-feature-out"
+
+    //when animation is complete, remove featureElement from the DOM
+    selectedFeature.addEventListener("animationend", function() {
+      selectedFeature.remove()
+      //Chose the feature element and hide it
+      document.querySelector(`[data-feature=${feature}`).classList.add("hide")
+    })
+
+
 
 // feature removed
   } else {
-    console.log(features[feature])
-    // feature removed
-    features[feature] = true
     target.classList.add("chosen")
+    features[feature] = true
 
     //Remove the hide class from fetured elements (layers) on main photo
     if (feature === "shield") {
@@ -77,26 +80,33 @@ function toggleOption(event) {
     }
 
     //Create new featureElement and add it to the list in the bottom
-    console.log("PRZED FUNKCJA")
     const newfeatureElement = createFeatureElement(feature) 
-    console.log("COS ", newfeatureElement)
     document.querySelector("#selected ul").appendChild(newfeatureElement)
     // feature added
 
-    // TODO: More code
+    //FLIP- "animate-feature-in"
+    const start = target.getBoundingClientRect()
+    const end = newfeatureElement.getBoundingClientRect()
+
+    const diffx = start.x - end.x + "px"
+    const diffy = start.y - end.y + "px"
+
+    newfeatureElement.style.setProperty("--diffx", diffx)
+    newfeatureElement.style.setProperty("--diffy", diffy)
+
+    //Animation feature in
+    newfeatureElement.classList = "animate-feature-in" 
 
   }
 }
 
 // Create featureElement to be appended to #selected ul - could have used a <template> instead
 function createFeatureElement(feature) {
-  console.log("WCHODZI")
   const li = document.createElement("li")
   li.dataset.feature = feature
 
   const img = document.createElement("img")
   img.src = `images/feature_${feature}.png`
-  console.log("SPR IMG SRC ", img.src)
   img.alt = capitalize(feature)
 
   li.append(img)
